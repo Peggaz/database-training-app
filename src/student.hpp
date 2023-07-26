@@ -17,6 +17,10 @@ public:
         Gender gender);
     
     std::string show() const;
+    std::string getPesel() const { return _pesel; }
+    std::string getLastName() const { return _lastName; }
+    std::string getGenderStr() const { return _gender == Gender::Female ? "Kobieta" : "Mezczyzna"; }
+    int getIndexNumber() const { return _indexNumber; }
 
 private:
     Gender _gender;

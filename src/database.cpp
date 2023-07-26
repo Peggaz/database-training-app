@@ -3,11 +3,11 @@
 
 bool Database::add(const Student& student)
 {
-    if(!_isAdded){
+    if(findPerPesel(student.getPesel()) == nullptr && findPerLastName(student.getLastName()) == nullptr){
         _students.push_back(student);
+        return true;
     }
-    _isAdded = !_isAdded;
-    return _isAdded;
+    return false;
     
     
 }
@@ -26,3 +26,47 @@ std::string Database::show() const
     return res;
 }
 
+Student* Database::findPerPesel(std::string pesel)
+{
+    for(auto && student : _students){
+        if(student.getPesel() == pesel){
+            return &student;
+        }
+    }
+    return nullptr;
+}
+
+Student* Database::findPerLastName(std::string lastName)
+{
+    for(auto && student : _students){
+        if(student.getLastName() == lastName){
+            return &student;
+        }
+    }
+    return nullptr;
+}
+
+
+void Database::removePerIndex(int index)
+{
+    for(auto it = _students.begin(); it != _students.end(); ++it){
+        if(it->getIndexNumber() == index){
+            _students.erase(it);
+            return;
+        }
+    }
+}
+
+void Database::sortedByPesel()
+{
+    std::sort(_students.begin(), _students.end(), [](const Student& a, const Student& b){
+        return a.getPesel() < b.getPesel();
+    });
+}
+
+void Database::sortedByLastName()
+{
+    std::sort(_students.begin(), _students.end(), [](const Student& a, const Student& b){
+        return a.getLastName() < b.getLastName();
+    });
+}

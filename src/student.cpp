@@ -18,5 +18,5 @@ Student::Student(std::string name,
 
 std::string Student::show() const
 {
-    return _name + " " + _lastName + "; " + _address + "; " + std::to_string(_indexNumber) + "; " + _pesel + "; " + "Male\n";
+    return _name + " " + _lastName + "; " + _address + "; " + std::to_string(_indexNumber) + "; " + _pesel + "; " + getGenderStr() + "\n";
 }
