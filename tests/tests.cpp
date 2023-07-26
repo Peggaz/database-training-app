@@ -27,16 +27,18 @@ TEST_F(DatabaseTest, DisplayEmptyDb){
     EXPECT_EQ(content, expectedContent);
 }
 
-// TEST(DisplayDb, DisplayNonEmptyDb){
-//      Student adam{
-//         "Adad", 
-//         "Smith", 
-//         "ul dobra 123, 00-200 Warszawa",
-//         123456,
-//         "11223344567",
-//         Gender::Male
-//     };
-//     Database db;
-//     EXPECT_TRUE(db.add(adam)); 
-//     db.display();
-// }
+TEST_F(DatabaseTest, DisplayNonEmptyDb){
+     Student adam{
+        "Adad", 
+        "Smith", 
+        "ul awd 123, 00-200 Poznań",
+        123456,
+        "11223344567",
+        Gender::Male
+    };
+    EXPECT_TRUE(db.add(adam)); 
+
+    std::string content = db.show();
+    std::string expectedContent = "Adad Smith; ul awd 123, 00-200 Poznań; 123456; 11223344567; Male\n";
+    EXPECT_EQ(content, expectedContent);
+}

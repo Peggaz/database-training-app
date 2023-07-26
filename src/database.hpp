@@ -2,7 +2,7 @@
 #include "student.hpp"
 #include <string>
 #include <iostream>
-
+#include <vector>
 
 class Database
 {
@@ -15,5 +15,6 @@ public:
     // Student get(const std::string& pesel);
     // std::vector<Student> getAll();
 private:
+    std::vector<Student> _students;
     bool _isAdded = false;
 };
